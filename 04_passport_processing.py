@@ -35,13 +35,13 @@ regex = [re.compile(p) for p in patterns]
 # part 2
 
 patterns2 = [
-    "ecl:(amb|blu|brn|gry|grn|hzl|oth)( |$)",
-    "pid:[0-9]{9}( |$)",
-    "hcl:#[0-9a-f]{6}( |$)",
-    "byr:[0-9]{4}( |$)",
-    "iyr:[0-9]{4}( |$)",
-    "eyr:[0-9]{4}( |$)",
-    "hgt:[0-9]+(cm|in)( |$)",
+    "( |^)ecl:(amb|blu|brn|gry|grn|hzl|oth)( |$)",
+    "( |^)pid:[0-9]{9}( |$)",
+    "( |^)hcl:#[0-9a-f]{6}( |$)",
+    "( |^)byr:[0-9]{4}( |$)",
+    "( |^)iyr:[0-9]{4}( |$)",
+    "( |^)eyr:[0-9]{4}( |$)",
+    "( |^)hgt:[0-9]+(cm|in)( |$)",
 ]
 
 byr = re.compile("byr:([0-9]{4})")
