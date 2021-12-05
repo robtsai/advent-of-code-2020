@@ -1,6 +1,7 @@
 from functools import reduce
 import operator
 
+
 def build_board(path):
     """takes a path and returns the board"""
     board = []
@@ -34,7 +35,6 @@ def fly_sled(board, startrow, startcol, delta_r, delta_c):
         tree, row, col = traverse(board, row, col, delta_r, delta_c)
         numtrees += tree
     return numtrees
-
 
 
 def run_tree_scenarios():
