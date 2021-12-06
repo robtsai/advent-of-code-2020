@@ -1,14 +1,13 @@
-
 def process_input(filepath):
     output = []
     curr = []
-    with open(filepath, 'r') as f:
+    with open(filepath, "r") as f:
         for line in f:
-            if line == '\n':
+            if line == "\n":
                 output.append(curr)
                 curr = []
             else:
-                curr.append(line.strip().replace('\n', ''))
+                curr.append(line.strip().replace("\n", ""))
     output.append(curr)
     return output
 
@@ -31,10 +30,9 @@ def everyone_answered(group):
     return sum([1 for v in d.values() if v == l])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     inputfile = "input_files/problem6.txt"
     customs = process_input(inputfile)
-    
 
     total = 0
     for group in customs:
@@ -42,11 +40,8 @@ if __name__ == '__main__':
 
     print(f"answer to part 1 is {total}")
 
-
     all_yes = 0
     for group in customs:
         all_yes += everyone_answered(group)
 
     print(f"answer to part 2 is {all_yes}")
-
-    
