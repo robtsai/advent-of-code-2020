@@ -33,12 +33,9 @@ int main() {
 
 	vector<int> nums;
 
-	int n = 0;
-
 	while (getline (myfile, mytext)) {
 		int num = stoi(mytext);
 		nums.push_back(num);
-		n++;
 	}
 
 	sort(nums.begin(), nums.end());
