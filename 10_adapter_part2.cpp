@@ -72,5 +72,6 @@ int main() {
 		cout << i << " " << waystohere << endl;
 	}
 
+	cout << "the answer is " << numways.back() << endl;
 
 }
