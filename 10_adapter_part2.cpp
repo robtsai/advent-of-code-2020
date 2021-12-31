@@ -10,20 +10,14 @@ using std::string;
 using std::ifstream;
 using std::sort;
 
-void print_vec(vector<int> vec) {
-	for (int i: vec) {
+template <typename T>
+void print(vector<T> vec) {
+	for (T i: vec) {
 		cout << i << ' ';
 	}
 	cout << "\n" << endl;
 }
 
-
-void print_long(vector<long> vec) {
-	for (long i: vec) {
-		cout << i << ' ';
-	}
-	cout << "\n" << endl;
-}
 
 
 int main() {
@@ -40,7 +34,7 @@ int main() {
 
 	sort(nums.begin(), nums.end());
 
-	print_vec(nums);
+	print(nums);
 
 	int *largest = &nums.back();
 
@@ -49,7 +43,7 @@ int main() {
 	vector<long> numways(*largest+1, 0);
 
 	numways[0] = 1;
-	print_long(numways);
+	print(numways);
 
 	for (int i: nums) {
 		int less1 = i-1;
