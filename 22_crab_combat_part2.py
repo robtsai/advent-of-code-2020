@@ -23,6 +23,7 @@ GAMECOUNTER = 1
 
 GAMESDICT = {}
 
+
 class Deck:
     def __init__(self, name, cards):
         self.name = name
@@ -51,8 +52,9 @@ class Game:
         # we will split player1 and player 2 cards with a -1 to denote uniquenestt
         self.player1seen = set()
         self.player2seen = set()
-        self.player1origcards = list(player1.cards)
         self.immediatelyterminate = False
+        self.p1orig = list(self.player1.cards)
+
 
 
 
@@ -68,8 +70,10 @@ class Game:
 
         if tuple(list(self.player1.cards)) in self.player1seen or tuple(list(self.player2.cards)) in self.player2seen:
             print("immediately terminate as we saw this pattern. Player 1 wins!!")
-            self.player1.cards = self.player1origcards
-            self.calcscore(self.player1)
+            print("we need to get state of player 1 cards")
+            print(f"game num is {self.gamenum}")
+            print(f"orig p1 hands of this game before prior rounds is {self.p1orig}")
+            self.calcscore(self.p1orig)
             sys.exit(0)
         else:
             self.player1seen.add(tuple(list(self.player1.cards)))
@@ -100,6 +104,8 @@ class Game:
                 p2subcards = list(self.player2.cards)
                 p1sub = Deck("player1sub", p1subcards)
                 p2sub = Deck("player2sub", p2subcards)
+
+
                 subgame = Game(p1sub, p2sub)
                 winner = subgame.playgame()
                 print(f"winner of subgame is {winner}")
@@ -121,8 +127,8 @@ class Game:
             self.round += 1
 
 
-    def calcscore(self, winningplayer):
-        winningcards = list(winningplayer.cards)
+
+    def calcscore(self, winningcards):
         factors = list(reversed(range(1, len(winningcards)+1)))
         z = list(zip(winningcards, factors))
         print(z)
@@ -145,7 +151,7 @@ class Game:
             print("winner of orig game is:")
             print(self.winner.name)
             print(self.winner)
-            self.calcscore(self.winner)
+            self.calcscore(list(self.winner.cards))
             return "YESSSS"
 
         else:
